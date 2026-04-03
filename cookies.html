@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Privacy Policy</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class="legal-page">
+  <div class="container">
+
+<div class="cookie-popup" id="cookiePopup">
+
+<p>
+This website uses cookies to improve your experience.
+</p>
+
+<button id="acceptCookies" class="cookie-btn">
+Accept
+</button>
+
+</div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+
+  const cookiePopup = document.getElementById("cookiePopup");
+  const acceptBtn = document.getElementById("acceptCookies");
+
+  // Check if already accepted
+  const accepted = localStorage.getItem("cookiesAccepted");
+
+  if (!accepted && cookiePopup) {
+    cookiePopup.style.display = "flex";
+  }
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener("click", () => {
+
+      // Save consent
+      localStorage.setItem("cookiesAccepted", "true");
+
+      // Hide popup smoothly
+      cookiePopup.style.opacity = "0";
+
+      setTimeout(() => {
+        cookiePopup.style.display = "none";
+      }, 300);
+
+    });
+  }
+
+});
+</script>
+
+</body>
+</html>
