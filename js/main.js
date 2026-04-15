@@ -55,10 +55,17 @@ window.addEventListener("scroll", () => {
 const hero = document.querySelector(".hero");
 
 window.addEventListener("scroll", () => {
-  let scroll = window.scrollY;
-  if (hero) {
-    hero.style.transform = `translateY(${scroll * 0.2}px)`;
-  }
+  const scrollY = window.scrollY;
+
+  // navbar
+  navbar.classList.toggle("scrolled", scrollY > 50);
+
+  // progress bar
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollY / docHeight) * 100 + "%";
+
+  // back to top
+  backToTopBtn.classList.toggle("show", scrollY > 300);
 });
 
 const glow = document.querySelector(".cursor-glow");
@@ -68,6 +75,12 @@ hero.addEventListener("mousemove", (e) => {
   glow.style.top = e.clientY + "px";
 });
 
+if (window.innerWidth > 768) {
+  hero.addEventListener("mousemove", (e) => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+  });
+}
 
 // ===============================
 // DARK MODE TOGGLE
