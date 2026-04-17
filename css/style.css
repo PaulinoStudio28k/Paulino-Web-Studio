@@ -14,10 +14,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-html, body {
-  overflow-x: hidden;
-}
-
 .container {
   width: 85%;
   max-width: 1200px;
@@ -714,15 +710,27 @@ body.dark-mode .section-badge {
 }
 
 
-
 /* ===== REAL ESTATE NAVBAR ===== */
+.page-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure the navbar remains sticky */
 .re-navbar {
-  position: sticky;
+  position: fixed; /* Change from sticky to fixed */
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   backdrop-filter: blur(12px);
-  background: rgba(10, 15, 28, 0.65);
+  background: rgba(255,255,255,0.85);
   border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+body.dark-mode .re-navbar {
+  background: rgba(2, 6, 23, 0.6);
 }
 
 .re-nav-wrapper {
@@ -785,9 +793,9 @@ body.dark-mode .re-actions .btn-outline:hover {
   width: 85%;
   max-width: 320px;
   height: 100vh;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(255, 255, 255, 0.966);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 80px 20px 30px;
   display: flex;
   flex-direction: column;
@@ -796,7 +804,7 @@ body.dark-mode .re-actions .btn-outline:hover {
   z-index: 2000;
 
   /* --- ADDED FIXES BELOW --- */
-  transform: translateX(100%);
+  transform: translateX(110%);
   visibility: hidden; /* Hides it completely from the browser when closed */
   transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), visibility 0s linear 0.5s;
 }
@@ -921,7 +929,7 @@ body.dark-mode .re-icon.moon {
   padding: 14px 16px;
   border-radius: 12px;
 
-  background: rgba(255,255,255,0.4);
+  background: #e5e7eb;
   backdrop-filter: blur(10px);
 
   display: flex;
